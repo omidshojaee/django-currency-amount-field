@@ -16,8 +16,8 @@ class CurrencyWidget(forms.TextInput):
     """
 
     class Media:
-        js = ("currency_field/js/currency-widget.js",)
-        css = {"all": ("currency_field/css/currency-widget.css",)}
+        js = ("currency_amount_field/js/currency-widget.js",)
+        css = {"all": ("currency_amount_field/css/currency-widget.css",)}
 
     def __init__(self, attrs=None):
         default_attrs = {

@@ -3,8 +3,8 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "django-currency-field"
-version = "0.1.0"
+name = "django-currency-amount-field"
+version = "1.0.0"
 description = "A Django DecimalField subclass for monetary amounts with a comma-grouping admin widget and an optional paired currency-code field."
 readme = "README.md"
 license = "MIT"
@@ -15,7 +15,7 @@ dependencies = [
     "Django>=5.2",
 ]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 5 - Production/Stable",
     "Framework :: Django",
     "Framework :: Django :: 5.2",
     "Intended Audience :: Developers",
@@ -32,9 +32,9 @@ classifiers = [
 test = ["pytest>=7", "pytest-django>=4"]
 
 [project.urls]
-Homepage = "https://github.com/omidshojaee/django-currency-field"
-Repository = "https://github.com/omidshojaee/django-currency-field"
-Issues = "https://github.com/omidshojaee/django-currency-field/issues"
+Homepage = "https://github.com/omidshojaee/django-currency-amount-field"
+Repository = "https://github.com/omidshojaee/django-currency-amount-field"
+Issues = "https://github.com/omidshojaee/django-currency-amount-field/issues"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
@@ -44,7 +44,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-currency_field = ["static/currency_field/js/*.js", "static/currency_field/css/*.css"]
+currency_amount_field = ["static/currency_amount_field/js/*.js", "static/currency_amount_field/css/*.css"]
 
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "tests.settings"

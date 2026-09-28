@@ -1,4 +1,4 @@
-# django-currency-field
+# django-currency-amount-field
 
 Django's `DecimalField` has a UX trap in the admin: amounts are shown as a
 plain, ungrouped number, so a stray extra digit is invisible. Typing
@@ -19,17 +19,17 @@ turns a million into ten million with no warning.
 ## Install
 
 ```bash
-pip install django-currency-field
+pip install django-currency-amount-field
 ```
 
-Add `"currency_field"` to `INSTALLED_APPS` (needed for the static
+Add `"currency_amount_field"` to `INSTALLED_APPS` (needed for the static
 JS/CSS to be collected).
 
 ## Usage
 
 ```python
 from django.db import models
-from currency_field.fields import CurrencyField
+from currency_amount_field.fields import CurrencyField
 
 
 class Invoice(models.Model):
@@ -57,7 +57,7 @@ class InvoiceAdmin(admin.ModelAdmin):
 - `currency_field_name` — override the sibling field's name.
 - `default_currency` — default value for the sibling field (e.g. `"USD"`).
 - `currency_choices` — override the list of `(code, label)` choices
-  (defaults to `currency_field.codes.CURRENCY_CHOICES`, a common subset of
+  (defaults to `currency_amount_field.codes.CURRENCY_CHOICES`, a common subset of
   ISO 4217).
 - `currency_max_length` — length of the currency-code column (default `3`).
 

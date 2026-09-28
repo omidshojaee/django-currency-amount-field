@@ -10,7 +10,7 @@ DATABASES = {
 INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.auth",
-    "currency_field",
+    "currency_amount_field",
 ]
 
 USE_TZ = True

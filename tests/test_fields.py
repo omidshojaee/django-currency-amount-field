@@ -3,8 +3,8 @@ from decimal import Decimal
 import pytest
 from django import forms
 
-from currency_field.forms import CurrencyFormField
-from currency_field.widgets import CurrencyWidget, group_decimal_string
+from currency_amount_field.forms import CurrencyFormField
+from currency_amount_field.widgets import CurrencyWidget, group_decimal_string
 
 # Model-level behaviour (the sibling currency field getting added,
 # ModelForm wiring, DB round-tripping) is exercised against a real app in
