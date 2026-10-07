@@ -54,7 +54,7 @@ jobs:
         with:
           node-version: "22"
       - name: Test the widget script
-        run: node --test tests/js/
+        run: node --test tests/js/format.test.mjs
 
   package:
     runs-on: ubuntu-latest

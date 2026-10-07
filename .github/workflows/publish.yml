@@ -21,7 +21,7 @@ jobs:
           node-version: "22"
       - run: pip install -e ".[test]"
       - run: pytest tests/ -v
-      - run: node --test tests/js/
+      - run: node --test tests/js/format.test.mjs
 
   build:
     needs: test

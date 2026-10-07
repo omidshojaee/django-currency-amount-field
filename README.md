@@ -121,5 +121,5 @@ after its amount). It changes no column.
 ```bash
 pip install -e ".[test]"
 pytest              # Python
-node --test tests/js/   # the widget script
+node --test tests/js/format.test.mjs   # the widget script
 ```

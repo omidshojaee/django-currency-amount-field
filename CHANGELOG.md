@@ -44,7 +44,7 @@
 ### Packaging
 
 - Tests for the model field, migrations (on a table with rows) and the script
-  (`node --test tests/js/`); CI for Python 3.10 to 3.14 and Django 5.2, 6.0 and 6.1;
+  (`node --test tests/js/format.test.mjs`); CI for Python 3.10 to 3.14 and Django 5.2, 6.0 and 6.1;
   the publish workflow runs the tests and `twine check` first.
 - Django 6.0 and 6.1 and Python 3.14 classifiers; `setuptools>=77` for the SPDX
   license expression.
