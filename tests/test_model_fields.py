@@ -251,10 +251,11 @@ def test_clone_keeps_every_option():
 
 
 def test_the_package_version_is_consistent():
-    import tomllib
+    import re
     from pathlib import Path
 
     import currency_amount_field
 
-    pyproject = tomllib.loads((Path(__file__).parent.parent / "pyproject.toml").read_text(encoding="utf-8"))
-    assert currency_amount_field.__version__ == pyproject["project"]["version"]
+    text = (Path(__file__).parent.parent / "pyproject.toml").read_text(encoding="utf-8")
+    declared = re.search(r'^version\s*=\s*"([^"]+)"', text, re.MULTILINE).group(1)
+    assert currency_amount_field.__version__ == declared
