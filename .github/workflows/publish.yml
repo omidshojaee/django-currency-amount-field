@@ -9,7 +9,22 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - run: pip install -e ".[test]"
+      - run: pytest tests/ -v
+      - run: node --test tests/js/
+
   build:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -25,8 +40,9 @@ jobs:
             echo "Package version $package_version does not match tag v$tag_version"
             exit 1
           }
-      - run: pip install build
+      - run: pip install build twine
       - run: python -m build
+      - run: twine check dist/*
       - uses: actions/upload-artifact@v7
         with:
           name: dist

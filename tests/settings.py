@@ -11,6 +11,8 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.auth",
     "currency_amount_field",
+    "tests.testapp",
 ]
 
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 USE_TZ = True

@@ -1,0 +1,33 @@
+[
+  {"input": "", "expected": ""},
+  {"input": "abc", "expected": ""},
+  {"input": "1234567", "expected": "1,234,567"},
+  {"input": "1234567.89", "expected": "1,234,567.89"},
+  {"input": "-1234.5", "expected": "-1,234.5"},
+  {"input": "0.5", "expected": "0.5"},
+  {"input": ".5", "expected": ".5"},
+  {"input": "007", "expected": "7"},
+  {"input": "--5", "expected": "-5"},
+  {"input": "5-", "expected": "5"},
+  {"input": "+5", "expected": "5"},
+  {"input": "1.2.3", "expected": "1.23"},
+  {"input": "1,234,567", "expected": "1,234,567"},
+  {"input": "12,50", "expected": "1,250", "note": "a typed comma is only grouping noise; the grouping shows the real size"},
+
+  {"input": "1.2345", "expected": "1.23", "note": "two decimals when the field does not say"},
+  {"input": "1.2345", "places": 2, "expected": "1.23"},
+  {"input": "1.2345", "places": 4, "expected": "1.2345"},
+  {"input": "1.23456", "places": 4, "expected": "1.2345"},
+  {"input": "0.001", "places": 3, "expected": "0.001"},
+  {"input": "1.5", "places": 0, "expected": "1"},
+  {"input": "1234.99", "places": 0, "expected": "1,234"},
+
+  {"input": "۱۲۳۴", "expected": "۱,۲۳۴", "note": "Persian digits are kept, not deleted"},
+  {"input": "۱۲۳٫۵", "expected": "۱۲۳.۵"},
+  {"input": "۱٬۲۳۴٫۵۶۷", "expected": "۱,۲۳۴.۵۶"},
+  {"input": "-۱۲۳۴", "expected": "-۱,۲۳۴"},
+  {"input": "۱۲۳۴۵۶۷", "places": 0, "expected": "۱,۲۳۴,۵۶۷"},
+  {"input": "١٢٣٤", "expected": "١,٢٣٤", "note": "Arabic-Indic digits are kept too"},
+  {"input": "12٫5", "expected": "12.5", "note": "Arabic decimal separator after Latin digits"},
+  {"input": "−5", "expected": "-5", "note": "Unicode minus"}
+]

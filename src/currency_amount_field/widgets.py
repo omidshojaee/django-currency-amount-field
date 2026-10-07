@@ -1,5 +1,7 @@
 from django import forms
 
+CSS_CLASS = "currency-field-input"
+
 
 class CurrencyWidget(forms.TextInput):
     """
@@ -13,6 +15,10 @@ class CurrencyWidget(forms.TextInput):
     `CurrencyFormField.to_python` strips them before decimal
     conversion, so this is purely a display/UX layer over a normal
     DecimalField.
+
+    The script finds its inputs through the ``data-currency-widget`` attribute
+    (and the ``currency-field-input`` class); a ``class`` you pass is added to,
+    not replacing, the package's own.
     """
 
     class Media:
@@ -20,14 +26,18 @@ class CurrencyWidget(forms.TextInput):
         css = {"all": ("currency_amount_field/css/currency-widget.css",)}
 
     def __init__(self, attrs=None):
-        default_attrs = {
-            "class": "currency-field-input",
+        attrs = dict(attrs or {})
+        classes = str(attrs.get("class") or "").split()
+        if CSS_CLASS not in classes:
+            classes.append(CSS_CLASS)
+        final_attrs = {
             "inputmode": "decimal",
             "autocomplete": "off",
+            "data-currency-widget": "true",
         }
-        if attrs:
-            default_attrs.update(attrs)
-        super().__init__(default_attrs)
+        final_attrs.update(attrs)
+        final_attrs["class"] = " ".join(classes)
+        super().__init__(final_attrs)
 
     def format_value(self, value):
         value = super().format_value(value)
@@ -49,7 +59,7 @@ def group_decimal_string(value):
         int_part, frac_part = s, None
 
     int_part = int_part or "0"
-    if not int_part.isdigit():
+    if not int_part.isdecimal():
         # Not a plain number we know how to group (e.g. already contains
         # separators, or is some other free-form value) - leave it alone.
         return value
